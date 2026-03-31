@@ -127,3 +127,9 @@ body
   bottom: 10px;
   right: 30px;
 }
+.footer {
+  background: #3b2f2f;
+  color: #fff;
+  padding: 1px  1px;
+  text-align: center;
+}
