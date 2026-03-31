@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
 body 
  {
         margin: 0;
@@ -10,13 +11,13 @@ body
         justify-content: space-between;
         padding: 10px 20px;
         background-color: #f2f2f2;
-        border-bottom: 1px solid #000000;
+
     }
     .logo {
         font-size: 44px;
         font-family: Regalia;
         font-weight: bold;
-        color: #555;
+        color: #443c3c;
     
     }
     .search-box {
@@ -35,7 +36,7 @@ body
         width: 250px;
     }
     .search-box button {
-        background: #666;
+        background: #443c3c;
         color: white;
         border: none;
         padding: 8px 15px;
@@ -50,7 +51,7 @@ body
     .catalog-btn {
         display: flex;
         align-items: center;
-        background: #555;
+        background: #443c3c;
         color: white;
         padding: 8px 15px;
         border-radius: 8px;
@@ -85,6 +86,7 @@ body
 }
 .hero-text h1 {
   font-size: 70px;
+  color: #443c3c;
   color: #4b3f3f;
   font-weight: bold;
   line-height: 1.2;
@@ -128,6 +130,52 @@ body
   right: 30px;
 }
 .footer {
+  background: #443c3c;
+  color: #fff;
+  padding: 1px  1px;
+  text-align: center;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+  padding: 10px 40px;
+  background: #cecece; 
+  box-sizing: border-box;
+}
+
+.filter-bar button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  color: #443c3c;
+  position: relative;
+  padding: 8px 10px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.filter-bar button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #443c3c;
+  transition: 0.3s;
+}
+
+.filter-bar button:hover::after {
+  width: 100%;
+}
+
+.filter-bar button.active::after {
+  width: 100%;
   background: #3b2f2f;
   color: #fff;
   padding: 1px  1px;
