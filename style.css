@@ -87,6 +87,7 @@ body
 .hero-text h1 {
   font-size: 70px;
   color: #443c3c;
+  color: #4b3f3f;
   font-weight: bold;
   line-height: 1.2;
 }
@@ -175,4 +176,8 @@ body
 
 .filter-bar button.active::after {
   width: 100%;
+  background: #3b2f2f;
+  color: #fff;
+  padding: 1px  1px;
+  text-align: center;
 }
