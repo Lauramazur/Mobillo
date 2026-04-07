@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+<<<<<<< HEAD
+
+=======
+>>>>>>> main
 body 
  {
         margin: 0;
@@ -13,13 +17,36 @@ body
         background-color: #f2f2f2;
 
     }
+<<<<<<< HEAD
+
+    /* LOGO - underline pe jumătate */
+=======
+>>>>>>> main
     .logo {
         font-size: 44px;
         font-family: Regalia;
         font-weight: bold;
+<<<<<<< HEAD
+        color: #000;
+        letter-spacing: 1px;
+        position: relative;
+    }
+
+    .logo::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 50%;
+        height: 2px;
+        background: #5a3e36;
+    }
+
+=======
         color: #443c3c;
     
     }
+>>>>>>> main
     .search-box {
         display: flex;
         align-items: center;
@@ -31,7 +58,11 @@ body
     }
     .search-box input {
         border: none;
+<<<<<<< HEAD
+        padding: 8px 12px;
+=======
         padding: 8px 10px;
+>>>>>>> main
         outline: none;
         width: 250px;
     }
@@ -86,6 +117,41 @@ body
 }
 .hero-text h1 {
   font-size: 70px;
+<<<<<<< HEAD
+  color: #000;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.line1 {
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.line2 {
+  display: block;
+  text-align: left;
+}
+
+/* MOBILLO - underline pe jumătate */
+.accent {
+  color: #5a3e36;
+  font-weight: bold;
+  position: relative;
+}
+
+.accent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 50%;
+  height: 2px;
+  background: #5a3e36;
+}
+
+=======
   color: #443c3c;
   color: #4b3f3f;
   font-weight: bold;
@@ -99,6 +165,7 @@ body
   display: block;
   text-align: center;
 }
+>>>>>>> main
 .hero-images {
   position: relative;
   width: 900px;  
@@ -180,6 +247,8 @@ body
   color: #fff;
   padding: 1px  1px;
   text-align: center;
+<<<<<<< HEAD
+=======
 }
 
 .catalog {
@@ -283,4 +352,5 @@ body
 
 .card button:hover {
   background: #4ea832;
+>>>>>>> main
 }
