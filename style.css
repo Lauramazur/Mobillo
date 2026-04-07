@@ -215,7 +215,7 @@ body
     display: block;
 .promo-section {
   position: relative;
-  height: 550px;
+  height: 551px;
   background: url("img/background.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
