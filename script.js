@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
 let toateProdusele = [
   { nume: "Pat Cloud Curve", categorie: "pat", imagine: "https://www.homeitaly.md/wp-content/uploads/2024/03/canapea-nicoline-italia-homeitaly-amalfi_0001_amalfi5.jpg" },
   { nume: "Dulap Horizon", categorie: "dormitor", imagine: "https://www.homeitaly.md/wp-content/uploads/2023/09/dulap-garderoba-alf-dafre-homeitaly-poker-clara_0000s_0002_Poker-18-pag-67.jpg" },
@@ -72,6 +73,12 @@ let toateProdusele = [
 ];
 let categorieSelectata = "toate";
 let textCautare = "";
+const searchInput = document.getElementById("search");
+
+searchInput.addEventListener("input", (e) => {
+  textCautare = e.target.value.toLowerCase().trim();
+  filtreazaTot();
+});
 function afiseazaProduse(lista) {
   const container = document.getElementById('filtered-products');
 
@@ -108,4 +115,5 @@ document.querySelectorAll('.filter-bar button').forEach(btn => {
     categorieSelectata = btn.getAttribute('data-filter').toLowerCase();
     filtreazaTot();
   });
+});
 });
