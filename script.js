@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-let toateProdusele = [
-  { nume: "Pat Cloud Curve", categorie: "pat", imagine: "https://www.homeitaly.md/wp-content/uploads/2024/03/canapea-nicoline-italia-homeitaly-amalfi_0001_amalfi5.jpg" },
-  { nume: "Dulap Horizon", categorie: "dormitor", imagine: "https://www.homeitaly.md/wp-content/uploads/2023/09/dulap-garderoba-alf-dafre-homeitaly-poker-clara_0000s_0002_Poker-18-pag-67.jpg" },
-  { nume: "Canapea Cloud", categorie: "canapea", imagine: "https://www.homeitaly.md/wp-content/uploads/2024/03/canapea-nicoline-italia-homeitaly-aura_0002_aura3.jpg" },
-  { nume: "Masă Marble Luxe", categorie: "bucatarie", imagine: "https://www.homeitaly.md/wp-content/uploads/2023/05/masa-cattelan-italia-homeitaly-ATRIUM-Wood_0001_9d4f1262-3db8-4dde-9e1d-e3a35382a5f2.jpg" },
-  { nume: " Dulap Dualis", categorie: "dormitor", imagine: "https://mobilaideal.ro/image/cache/catalog/produse/vento/dressing/dressing-hera-wenge-123cm/dressing-hera-wenge-123cm-1-900x900.jpg" },
+  let toateProdusele = [
+    { nume: "Pat Cloud Curve", categorie: "pat", imagine: "https://www.homeitaly.md/wp-content/uploads/2024/03/canapea-nicoline-italia-homeitaly-amalfi_0001_amalfi5.jpg" },
+    { nume: "Dulap Horizon", categorie: "dormitor", imagine: "https://www.homeitaly.md/wp-content/uploads/2023/09/dulap-garderoba-alf-dafre-homeitaly-poker-clara_0000s_0002_Poker-18-pag-67.jpg" },
+    { nume: "Canapea Cloud", categorie: "canapea", imagine: "https://www.homeitaly.md/wp-content/uploads/2024/03/canapea-nicoline-italia-homeitaly-aura_0002_aura3.jpg" },
+    { nume: "Masă Marble Luxe", categorie: "bucatarie", imagine: "https://www.homeitaly.md/wp-content/uploads/2023/05/masa-cattelan-italia-homeitaly-ATRIUM-Wood_0001_9d4f1262-3db8-4dde-9e1d-e3a35382a5f2.jpg" } ,
+    { nume: " Dulap Dualis", categorie: "dormitor", imagine: "https://mobilaideal.ro/image/cache/catalog/produse/vento/dressing/dressing-hera-wenge-123cm/dressing-hera-wenge-123cm-1-900x900.jpg" },
   { nume: "Bucătărie Urban Grey  ", categorie: "bucatarie", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2F%2Fstorage%2F3910488%2Fconversions%2FlxtgMoLoQz-small.jpg&w=320&q=72" },
   { nume: "Comoda „Elegance”  ", categorie: "comod", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F4154912%2Ftumbe-tv.jpg&w=1400&q=72" },
   { nume: "Antreu Harmony ", categorie: "antreuri", imagine: "https://icam.md/storage/products/1015/600-662923b2ba6d1_e07a5ac97a138e8e65113bf6b7814a9e.jpg" },
@@ -71,49 +71,193 @@ let toateProdusele = [
  { nume: "Dulap Balance ", categorie: "dormitor", imagine: "https://i.pinimg.com/736x/bd/bf/ff/bdbfffa18b9457aba10204effa4fae83.jpg" },
 { nume: "Dulap Lumina ", categorie: "dormitor", imagine: "https://i.pinimg.com/1200x/80/6c/a3/806ca3072f1a77e19e5e6f420564bc27.jpg" },
 ];
-let categorieSelectata = "toate";
-let textCautare = "";
-const searchInput = document.getElementById("search");
 
-searchInput.addEventListener("input", (e) => {
-  textCautare = e.target.value.toLowerCase().trim();
-  filtreazaTot();
-});
-function afiseazaProduse(lista) {
-  const container = document.getElementById('filtered-products');
+  let categorieSelectata = "toate";
+  let textCautare = "";
 
-  if (lista.length === 0) {
-    container.style.display = 'flex';
-    container.innerHTML = '<p style="padding:20px;color:#888;">Nu există produse în această categorie.</p>';
-    return;
-  }
-  container.innerHTML = lista.map(prod => `
-    <div class="card">
-      <img src="${prod.imagine}" alt="${prod.nume}">
-      <h3>${prod.nume}</h3>
-    </div>
-  `).join('');
-  }
-function filtreazaTot() {
-  let rezultate = toateProdusele;
-  if (categorieSelectata !== "toate") {
-    rezultate = rezultate.filter(p =>
-      p.categorie.toLowerCase() === categorieSelectata
-    );
-  }
-  if (textCautare !== "") {
-    rezultate = rezultate.filter(p =>
-      p.nume.toLowerCase().includes(textCautare)
-    );
-  }
-  afiseazaProduse(rezultate);
-}
-document.querySelectorAll('.filter-bar button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-bar button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    categorieSelectata = btn.getAttribute('data-filter').toLowerCase();
+  const searchInput = document.getElementById("search");
+
+  searchInput.addEventListener("input", (e) => {
+    textCautare = e.target.value.toLowerCase().trim();
     filtreazaTot();
   });
-});
+
+  function afiseazaProduse(lista) {
+    const container = document.getElementById("filtered-products");
+
+    if (lista.length === 0) {
+      container.innerHTML = "<p style='padding:20px;color:#888;'>Nu există produse.</p>";
+      return;
+    }
+
+    container.innerHTML = lista.map((prod, index) => `
+      <div class="card" data-index="${index}">
+        <img src="${prod.imagine}" alt="${prod.nume}">
+        <h3 class="product-name">${prod.nume}</h3>
+
+        <button class="add-cart">Adaugă în coș</button>
+        <button class="add-fav">♡ Favorite</button>
+      </div>
+    `).join("");
+
+    attachProductEvents();
+  }
+
+  function filtreazaTot() {
+    let rezultate = toateProdusele;
+
+    if (categorieSelectata !== "toate") {
+      rezultate = rezultate.filter(p => p.categorie === categorieSelectata);
+    }
+
+    if (textCautare) {
+      rezultate = rezultate.filter(p =>
+        p.nume.toLowerCase().includes(textCautare)
+      );
+    }
+
+    afiseazaProduse(rezultate);
+  }
+
+  document.querySelectorAll(".filter-bar button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".filter-bar button").forEach(b => b.classList.remove("active"));
+
+      btn.classList.add("active");
+      categorieSelectata = btn.getAttribute("data-filter").toLowerCase();
+      filtreazaTot();
+    });
+  });
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  const cartIcon = document.getElementById("cart-icon");
+  const favIcon = document.getElementById("fav-icon");
+
+  const cartDropdown = document.getElementById("cart-dropdown");
+  const favDropdown = document.getElementById("fav-dropdown");
+
+  const cartCount = document.getElementById("cart-count");
+  const favCount = document.getElementById("fav-count");
+
+  const overlay = document.getElementById("overlay");
+
+  function saveData() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }
+
+  function updateUI() {
+    cartCount.textContent = cart.length;
+    favCount.textContent = favorites.length;
+
+    // CART
+    cartDropdown.innerHTML = `
+      <div class="dropdown-header">
+        <h3>Coș</h3>
+        <span id="close-cart">✖</span>
+      </div>
+    `;
+
+    cart.forEach(item => {
+      cartDropdown.innerHTML += `
+        <div class="dropdown-item">
+          <img src="${item.img}">
+          <div>
+            <p>${item.name}</p>
+            <span>${item.price}</span>
+          </div>
+        </div>
+      `;
+    });
+
+    favDropdown.innerHTML = `
+      <div class="dropdown-header">
+        <h3>Favorite</h3>
+        <span id="close-fav">✖</span>
+      </div>
+    `;
+
+    favorites.forEach(item => {
+      favDropdown.innerHTML += `
+        <div class="dropdown-item">
+          <img src="${item.img}">
+          <div>
+            <p>${item.name}</p>
+            <span>${item.price}</span>
+          </div>
+        </div>
+      `;
+    });
+
+    document.getElementById("close-cart")?.addEventListener("click", closeAll);
+    document.getElementById("close-fav")?.addEventListener("click", closeAll);
+  }
+
+  function addToCart(product) {
+    if (!cart.some(p => p.name === product.nume)) {
+      cart.push({
+        name: product.nume,
+        price: "—",
+        img: product.imagine
+      });
+
+      saveData();
+      updateUI();
+    }
+  }
+
+  function addToFavorites(product) {
+    if (!favorites.some(p => p.name === product.nume)) {
+      favorites.push({
+        name: product.nume,
+        price: "—",
+        img: product.imagine
+      });
+
+      saveData();
+      updateUI();
+    }
+  }
+
+  // IMPORTANT: eventuri pentru carduri generate din JS
+  function attachProductEvents() {
+    document.querySelectorAll(".card").forEach(card => {
+      const index = card.dataset.index;
+      const product = toateProdusele[index];
+
+      card.querySelector(".add-cart")?.addEventListener("click", () => {
+        addToCart(product);
+      });
+
+      card.querySelector(".add-fav")?.addEventListener("click", () => {
+        addToFavorites(product);
+      });
+    });
+  }
+
+  function closeAll() {
+    overlay.classList.remove("show");
+    cartDropdown.classList.remove("show");
+    favDropdown.classList.remove("show");
+  }
+
+  cartIcon.addEventListener("click", (e) => {
+    e.stopPropagation();
+    overlay.classList.add("show");
+    cartDropdown.classList.add("show");
+  });
+
+  favIcon.addEventListener("click", (e) => {
+    e.stopPropagation();
+    overlay.classList.add("show");
+    favDropdown.classList.add("show");
+  });
+
+  overlay.addEventListener("click", closeAll);
+
+  updateUI();
+  filtreazaTot();
+
 });
