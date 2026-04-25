@@ -105,4 +105,187 @@ document.querySelectorAll('.filter-bar button').forEach(btn => {
       afiseazaProduse(filtrate);
     }
   });
+<<<<<<< Updated upstream
+=======
+
+  function afiseazaProduse(lista) {
+    const container = document.getElementById("filtered-products");
+
+    if (lista.length === 0) {
+      container.innerHTML = "";
+      return;
+    }
+
+    container.innerHTML = lista.map((prod, index) => `
+      <div class="card" data-index="${index}">
+        <img src="${prod.imagine}" alt="${prod.nume}">
+        <h3 class="product-name">${prod.nume}</h3>
+
+        <button class="add-cart">Adaugă în coș</button>
+        <button class="add-fav">♡ Favorite</button>
+      </div>
+    `).join("");
+
+    attachProductEvents();
+  }
+
+  function filtreazaTot() {
+
+    
+    if (categorieSelectata === "") {
+      afiseazaProduse([]);
+      return;
+    }
+  let rezultate = toateProdusele;
+  rezultate = rezultate.filter(p => p.categorie === categorieSelectata);
+
+   if (textCautare) {
+      rezultate = rezultate.filter(p =>
+        p.nume.toLowerCase().includes(textCautare)
+      );
+    }  
+
+    afiseazaProduse(rezultate);
+  }
+
+  document.querySelectorAll(".filter-bar button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".filter-bar button").forEach(b => b.classList.remove("active"));
+
+      btn.classList.add("active");
+      categorieSelectata = btn.getAttribute("data-filter").toLowerCase();
+      filtreazaTot();
+    });
+  });
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  const cartIcon = document.getElementById("cart-icon");
+  const favIcon = document.getElementById("fav-icon");
+
+  const cartDropdown = document.getElementById("cart-dropdown");
+  const favDropdown = document.getElementById("fav-dropdown");
+
+  const cartCount = document.getElementById("cart-count");
+  const favCount = document.getElementById("fav-count");
+
+  const overlay = document.getElementById("overlay");
+
+  function saveData() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }
+
+  function updateUI() {
+    cartCount.textContent = cart.length;
+    favCount.textContent = favorites.length;
+
+    // CART
+    cartDropdown.innerHTML = `
+      <div class="dropdown-header">
+        <h3>Coș</h3>
+        <span id="close-cart">✖</span>
+      </div>
+    `;
+
+    cart.forEach(item => {
+      cartDropdown.innerHTML += `
+        <div class="dropdown-item">
+          <img src="${item.img}">
+          <div>
+            <p>${item.name}</p>
+            <span>${item.price}</span>
+          </div>
+        </div>
+      `;
+    });
+
+    favDropdown.innerHTML = `
+      <div class="dropdown-header">
+        <h3>Favorite</h3>
+        <span id="close-fav">✖</span>
+      </div>
+    `;
+
+    favorites.forEach(item => {
+      favDropdown.innerHTML += `
+        <div class="dropdown-item">
+          <img src="${item.img}">
+          <div>
+            <p>${item.name}</p>
+            <span>${item.price}</span>
+          </div>
+        </div>
+      `;
+    });
+
+    document.getElementById("close-cart")?.addEventListener("click", closeAll);
+    document.getElementById("close-fav")?.addEventListener("click", closeAll);
+  }
+
+  function addToCart(product) {
+    if (!cart.some(p => p.name === product.nume)) {
+      cart.push({
+        name: product.nume,
+        price: "—",
+        img: product.imagine
+      });
+
+      saveData();
+      updateUI();
+    }
+  }
+
+  function addToFavorites(product) {
+    if (!favorites.some(p => p.name === product.nume)) {
+      favorites.push({
+        name: product.nume,
+        price: "—",
+        img: product.imagine
+      });
+
+      saveData();
+      updateUI();
+    }
+  }
+  function attachProductEvents() {
+    document.querySelectorAll(".card").forEach(card => {
+      const index = card.dataset.index;
+      const product = toateProdusele[index];
+
+      card.querySelector(".add-cart")?.addEventListener("click", () => {
+        addToCart(product);
+      });
+
+      card.querySelector(".add-fav")?.addEventListener("click", () => {
+        addToFavorites(product);
+      });
+    });
+  }
+
+  function closeAll() {
+    overlay.classList.remove("show");
+    cartDropdown.classList.remove("show");
+    favDropdown.classList.remove("show");
+  }
+
+  cartIcon.addEventListener("click", (e) => {
+    e.stopPropagation();
+    overlay.classList.add("show");
+    cartDropdown.classList.add("show");
+  });
+
+  favIcon.addEventListener("click", (e) => {
+    e.stopPropagation();
+    overlay.classList.add("show");
+    favDropdown.classList.add("show");
+  });
+
+  overlay.addEventListener("click", closeAll);
+
+  updateUI();
+  filtreazaTot();
+
+>>>>>>> Stashed changes
 });
