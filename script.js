@@ -260,5 +260,4 @@ document.addEventListener("DOMContentLoaded", () => {
   updateUI();
   filtreazaTot();
 
-
 });
