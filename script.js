@@ -52,10 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
 { nume: "Comodă Parisienne ", categorie: "comod", imagine: "https://i.pinimg.com/1200x/8d/46/a4/8d46a414fba773aca7559cb53767cef0.jpg" },
 { nume: "Comodă Walnut ", categorie: "comod", imagine: "https://i.pinimg.com/736x/e8/96/b9/e896b9ed1266f7d7a5dbb6bab7ae3181.jpg" },
 { nume: "Comodă Aurum ", categorie: "comod", imagine: "https://i.pinimg.com/736x/21/74/ed/2174ed866c32d750b3043e2dbaf2ef44.jpg" },
-{ nume: "Pat Junior Rose ", categorie: "pentru copii", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F4264995%2Fconversions%2Fgtlv3nwbi9-original.jpg&w=1080&q=75"}, 
+{ nume: "Pat Junior Rose ", categorie: "pentru copii", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F4264995%2Fconversions%2Fgtlv3nwbi9-original.jpg&w=1080&q=75"},
 { nume: "Pat Bambi", categorie: "pentru copii", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F4255319%2Fconversions%2FvzgC1GsP4b-original.jpg&w=1080&q=75"},
 { nume: "Birou Smart Kids ", categorie: "pentru copii", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F4014319%2Fconversions%2FcyIHq5JMLf-original.jpg&w=1080&q=75"},
-{ nume: "Masă Joacă Toddler ", categorie: "pentru copii", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F4090233%2Fconversions%2FfVONXQAqUl-original.jpg&w=1080&q=75"}, 
+{ nume: "Masă Joacă Toddler ", categorie: "pentru copii", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F4090233%2Fconversions%2FfVONXQAqUl-original.jpg&w=1080&q=75"},
 { nume: "Comodă Nori ", categorie: "pentru copii", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F4107105%2Fconversions%2FPmM20r4gYp-original.jpg&w=1080&q=75"},
 { nume: "Canapea Fluffy ", categorie: "pentru copii", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F3365416%2Fconversions%2FOWR70bQM2M-original.jpg&w=1080&q=75"},
 { nume: "Scaun Koala ", categorie: "pentru copii", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F4209928%2Fconversions%2FwZksXmXlE0-original.jpg&w=1080&q=75"},
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 { nume: "Pat Duo Kids ", categorie: "pentru copii", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F4270487%2Fconversions%2Fu73V7vadBd-original.jpg&w=1080&q=75"},
 { nume: "Pătuț Noa ", categorie: "pentru copii", imagine: "https://bigshop.md/_next/image?url=https%3A%2F%2Fadmin.bigshop.md%2Fstorage%2F3919663%2Fconversions%2F9mQeccVmkG-original.jpg&w=1080&q=75"},
 { nume: "Dulap Beige Luxe ", categorie: "dormitor", imagine: "https://i.pinimg.com/1200x/bb/d2/1b/bbd21b9a1ad768b37e0ad614fbb7c8bf.jpg" },
-{ nume: "Dulap Eclipse” ", categorie: "dormitor", imagine: "https://i.pinimg.com/1200x/26/5d/ec/265dec7bdfce463e93846513a17d7d3f.jpg" },
+{ nume: "Dulap Eclipse ", categorie: "dormitor", imagine: "https://i.pinimg.com/1200x/26/5d/ec/265dec7bdfce463e93846513a17d7d3f.jpg" },
 { nume: "Dulap PureLine ", categorie: "dormitor", imagine: "https://i.pinimg.com/1200x/cb/ec/22/cbec22b162d0493b92e3c78bbcbc42db.jpg" },
 { nume: " Dulap Serenity", categorie: "dormitor", imagine: "https://i.pinimg.com/736x/f5/43/81/f54381b91d02064f8808c686cab97f97.jpg" },
 { nume: "Dulap Reflecta ", categorie: "dormitor", imagine: "https://i.pinimg.com/736x/3b/03/1e/3b031ed6c27319987364252caefc3962.jpg" },
@@ -72,7 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
 { nume: "Dulap Lumina ", categorie: "dormitor", imagine: "https://i.pinimg.com/1200x/80/6c/a3/806ca3072f1a77e19e5e6f420564bc27.jpg" },
 ];
 
-  let categorieSelectata = "toate";
+
+  let categorieSelectata = "";
   let textCautare = "";
 
   const searchInput = document.getElementById("search");
@@ -83,32 +84,35 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function afiseazaProduse(lista) {
-    const container = document.getElementById("filtered-products");
+  const container = document.getElementById("filtered-products");
 
-    if (lista.length === 0) {
-      container.innerHTML = "<p style='padding:20px;color:#888;'>Nu există produse.</p>";
+  if (lista.length === 0) {
+    container.innerHTML = ""; 
+    return;
+  }
+
+  container.innerHTML = lista.map((prod, index) => `
+    <div class="card" data-index="${index}">
+      <img src="${prod.imagine}" alt="${prod.nume}">
+      <h3 class="product-name">${prod.nume}</h3>
+
+      <button class="add-cart">Adaugă în coș</button>
+      <button class="add-fav">♡ Favorite</button>
+    </div>
+  `).join("");
+
+  attachProductEvents();
+}
+  function filtreazaTot() {
+  
+    if (categorieSelectata === "") {
+      afiseazaProduse([]);
       return;
     }
 
-    container.innerHTML = lista.map((prod, index) => `
-      <div class="card" data-index="${index}">
-        <img src="${prod.imagine}" alt="${prod.nume}">
-        <h3 class="product-name">${prod.nume}</h3>
-
-        <button class="add-cart">Adaugă în coș</button>
-        <button class="add-fav">♡ Favorite</button>
-      </div>
-    `).join("");
-
-    attachProductEvents();
-  }
-
-  function filtreazaTot() {
     let rezultate = toateProdusele;
 
-    if (categorieSelectata !== "toate") {
-      rezultate = rezultate.filter(p => p.categorie === categorieSelectata);
-    }
+    rezultate = rezultate.filter(p => p.categorie === categorieSelectata);
 
     if (textCautare) {
       rezultate = rezultate.filter(p =>
@@ -142,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const favCount = document.getElementById("fav-count");
 
   const overlay = document.getElementById("overlay");
+const filterBar = document.querySelector(".filter-bar");
 
   function saveData() {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -152,7 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
     cartCount.textContent = cart.length;
     favCount.textContent = favorites.length;
 
-    // CART
     cartDropdown.innerHTML = `
       <div class="dropdown-header">
         <h3>Coș</h3>
@@ -221,7 +225,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // IMPORTANT: eventuri pentru carduri generate din JS
   function attachProductEvents() {
     document.querySelectorAll(".card").forEach(card => {
       const index = card.dataset.index;
@@ -254,10 +257,9 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.classList.add("show");
     favDropdown.classList.add("show");
   });
-
   overlay.addEventListener("click", closeAll);
 
-  updateUI();
-  filtreazaTot();
 
+  updateUI();
+  filtreazaTot(); 
 });
