@@ -129,15 +129,12 @@ document.addEventListener("click", (e) => {
     `).join("");
   }
 
-    attachProductEvents();
-}
-
-document.querySelectorAll(".filter-bar button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    categorieSelectata = btn.dataset.filter;
-    filtreazaTot();
+  document.querySelectorAll(".filter-bar button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      categorieSelectata = btn.dataset.filter;
+      filtreazaTot();
+    });
   });
-});
 
   function filtreazaTot() {
   
