@@ -86,6 +86,7 @@ body
         padding: 2px 6px;
     }
     .hero {
+  margin-top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -275,7 +276,7 @@ body
   margin-top: 10px;
   padding: 8px 15px;
   border: none;
-  background: #6dbf4b;
+  background: #443c3c;
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -283,7 +284,7 @@ body
 }
 
 .card button:hover {
-  background: #4ea832;
+  background: #544a4a;
 }
 .filter-bar + .products {
   display: flex;
@@ -467,3 +468,135 @@ body
     text-align: center;
 }
 
+/* ===== DARK MODE COMPLET & COERENT ===== */
+
+body.dark {
+    background: #181818;
+    color: #eaeaea;
+}
+
+/* NAVBAR */
+body.dark .navbar {
+    background: #1f1f1f;
+}
+
+body.dark .logo {
+    color: #ffffff;
+}
+
+/* SEARCH */
+body.dark .search-box {
+    background: #2a2a2a;
+    border: 1px solid #444;
+}
+
+body.dark .search-box input {
+    background: transparent;
+    color: #fff;
+}
+
+body.dark .search-box button {
+    background: #3a3232;
+}
+
+/* ICONS */
+body.dark .icon {
+    color: #ffffff;
+}
+
+/* FILTER BAR */
+body.dark .filter-bar {
+    background: #1f1f1f;
+}
+
+body.dark .filter-bar button {
+    color: #eaeaea;
+}
+
+body.dark .filter-bar button::after {
+    background: #eaeaea;
+}
+
+/* HERO */
+body.dark .hero {
+    background: #181818;
+}
+
+body.dark .hero-text h1 {
+    color: #ffffff;
+}
+
+body.dark .accent {
+    color: #c89b8a;
+}
+
+/* PROMO SECTION */
+body.dark .promo-section {
+    background: #181818;
+}
+
+body.dark .overlay {
+    background: rgba(0,0,0,0.6);
+}
+
+body.dark .content {
+    color: #ffffff;
+}
+
+/* CARDURI GENERALE */
+body.dark .card {
+    background: #242424;
+    color: #eaeaea;
+    border: 1px solid #333;
+    box-shadow: none;
+}
+
+/* NUME PRODUS */
+body.dark .product-name {
+    color: #dddddd;
+}
+
+/* PREȚ */
+body.dark .price {
+    color: #ffffff;
+}
+
+/* BUTOANE */
+body.dark .card button {
+    background: #3a3232;
+    color: #fff;
+}
+
+body.dark .card button:hover {
+    background: #5a3e36;
+}
+
+/* PRODUSE FILTRATE */
+body.dark #filtered-products {
+    background: #181818;
+}
+
+body.dark #filtered-products .card {
+    background: #242424;
+}
+
+/* DROPDOWN */
+body.dark .dropdown {
+    background: #242424;
+    color: #ffffff;
+}
+
+body.dark .dropdown-item:hover {
+    background: #2f2f2f;
+}
+
+/* FOOTER */
+body.dark .footer {
+    background: #111;
+    color: #ccc;
+}
+/* numele produselor mai vizibil pe dark */
+body.dark .product-name,
+body.dark #filtered-products .card h3 {
+    color: #ffffff !important;
+}
