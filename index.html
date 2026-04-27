@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8">
+    <title>Mobillo</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="overlay-menu" id="overlay"></div>
+<header>
+    <div class="navbar">
+        <div class="logo">Mobillo</div>
+
+        <div class="search-box">
+         <input id="search" type="text" placeholder="Caută produse..." />
+          <button>🔍︎</button>
+        </div>
+        <div class="menu">
+    <div class="icon" id="cart-icon">
+        🛒
+        <span class="badge" id="cart-count">0</span>
+        <div class="dropdown" id="cart-dropdown"></div>
+    </div>
+
+    <div class="icon" id="fav-icon">
+        ♡
+        <span class="badge" id="fav-count">0</span>
+        <div class="dropdown" id="fav-dropdown"></div>
+    </div>
+        <div class="icon" id="theme-toggle">🌙</div>
+    </div>
+</div>
+    </header>
+    <div class="filter-bar">
+  <button data-filter="dormitor">Dulapuri</button>
+  <button data-filter="canapea">Canapele</button>
+  <button data-filter="bucatarie">Bucătării</button>
+   <button data-filter="antreuri">Antreuri</button>
+   <button data-filter="pat">Paturi</button>
+   <button data-filter="comod">Comode TV</button>
+   <button data-filter="pentru copii">Pentru copii</button>
+   <button data-filter="toate">Toate</button>
+</div>
+<div id="filtered-products"></div>
+<section class="hero">
+    <div class="hero-text">
+        <h1>
+            <span class="line1">Găsește mobila perfectă</span>
+            <span class="line2 accent">Mobillo</span>
+        </h1>
+    </div>
+
+    <div class="hero-images">
+        <img src="https://icam.md/storage/products/1013/66291e49854f9_1(5).jpg" class="img main">
+        <img src="https://icam.md/storage/products/1007/66291408a1b8e_1(4).jpg" class="img small top">
+        <img src="https://icam.md/storage/products/1781/685904afac31f_WhatsApp-Image-2025-06-23-at-09.16.11.jpg" class="img small bottom">
+    </div>
+</section>
+
+<section class="promo-section">
+    <div class="overlay"></div>
+
+    <div class="content">
+        <h1 class="title">Oferte speciale</h1>
+
+        <div class="products">
+
+            <div class="card">
+                <img src="https://icam.md/storage/products/1561/1290-6830632810a22_WhatsAppImage2025-05-23at11.29.04(3).webp">
+                <p class="product-name">Canapea extensibilă</p>
+                <p class="price">5951 Lei</p>
+                <button class="add-cart">🛒 Adaugă</button>
+                <button class="add-fav">♡</button>
+            </div>
+
+            <div class="card">
+                <img src="https://icam.md/storage/products/1942/1290-68b6ee1895e7d_DulappentrulivingMODERNICAM13.webp">
+                <p class="product-name">Dulap pentru living</p>
+                <p class="price">2950 Lei</p>
+                <button class="add-cart">🛒 Adaugă</button>
+                <button class="add-fav">♡</button>
+            </div>
+
+            <div class="card">
+                <img src="https://icam.md/storage/products/2332/1290-693bf72ab55cd_%D0%94%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%D0%B1%D0%B5%D0%B7%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F(3).webp">
+                <p class="product-name">Bucataria "Burgundy"</p>
+                <p class="price">7900 Lei</p>
+                <button class="add-cart">🛒 Adaugă</button>
+                <button class="add-fav">♡</button>
+            </div>
+
+            <div class="card">
+                <img src="https://icam.md/storage/products/1788/1290-6878a0b016e5a_5453892383658864800.webp">
+                <p class="product-name">Saltea</p>
+                <p class="price">7500 Lei</p>
+                <button class="add-cart">🛒 Adaugă</button>
+                <button class="add-fav">♡</button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="footer">
+    <p>
+        Realizat de 
+        <span>Mazur Laura</span> & 
+        <span>Șeremet Sorina</span> & 
+        <span>Paladi Diana</span> — 
+        <strong>DAW - 241</strong>
+    </p>
+</div>
+<script src="./script.js"></script>
+</body>
+</html>
