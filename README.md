@@ -6,3 +6,4 @@ Deschide `index.html` în browser. Nu e nevoie de instalare.
 - [Mazur Laura] - `@Lauramazur`
 - [Șeremet Sorina] - `@sorina-wq`
 - [Paladi  Diana] - `@Dianapaladi`
+

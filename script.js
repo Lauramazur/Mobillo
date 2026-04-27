@@ -129,6 +129,9 @@ document.addEventListener("click", (e) => {
     `).join("");
   }
 
+    attachProductEvents();
+}
+
 document.querySelectorAll(".filter-bar button").forEach(btn => {
   btn.addEventListener("click", () => {
     categorieSelectata = btn.dataset.filter;
@@ -137,11 +140,15 @@ document.querySelectorAll(".filter-bar button").forEach(btn => {
 });
 
   function filtreazaTot() {
-    let rezultate = [...toateProdusele];
-
-    if (categorieSelectata && categorieSelectata !== "toate") {
-      rezultate = rezultate.filter(p => p.categorie === categorieSelectata);
+  
+    if (categorieSelectata === "") {
+      afiseazaProduse([]);
+      return;
     }
+
+    let rezultate = toateProdusele;
+
+    rezultate = rezultate.filter(p => p.categorie === categorieSelectata);
 
     if (textCautare) {
       rezultate = rezultate.filter(p =>
@@ -161,6 +168,7 @@ document.querySelectorAll(".filter-bar button").forEach(btn => {
   const cartCount = document.getElementById("cart-count");
   const favCount = document.getElementById("fav-count");
   const overlay = document.getElementById("overlay");
+const filterBar = document.querySelector(".filter-bar");
 
   function saveData() {
     localStorage.setItem("cart", JSON.stringify(cart));
