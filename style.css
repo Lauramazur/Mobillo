@@ -40,7 +40,7 @@ body
         border-radius: 11px;
         overflow: hidden;
         border: 1px solid #ccc;
-        margin-left: 250px;
+        margin-left: auto;
     }
     .search-box input {
         border: none;
@@ -487,4 +487,130 @@ body
 }
 #filtered-products {
   display: none;
+}
+.card-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.card-buttons button {
+  flex: 1;
+}
+
+body.dark {
+    background: #181818;
+    color: #eaeaea;
+}
+
+body.dark .navbar {
+    background: #1f1f1f;
+}
+
+body.dark .logo {
+    color: #ffffff;
+}
+
+body.dark .search-box {
+    background: #2a2a2a;
+    border: 1px solid #444;
+}
+
+body.dark .search-box input {
+    background: transparent;
+    color: #fff;
+}
+
+body.dark .search-box button {
+    background: #3a3232;
+}
+
+body.dark .icon {
+    color: #ffffff;
+}
+
+body.dark .filter-bar {
+    background: #1f1f1f;
+}
+
+body.dark .filter-bar button {
+    color: #eaeaea;
+}
+
+body.dark .filter-bar button::after {
+    background: #eaeaea;
+}
+
+body.dark .hero {
+    background: #181818;
+}
+
+body.dark .hero-text h1 {
+    color: #ffffff;
+}
+
+body.dark .accent {
+    color: #c89b8a;
+}
+
+body.dark .promo-section {
+    background: #181818;
+}
+
+body.dark .overlay {
+    background: rgba(0,0,0,0.6);
+}
+
+body.dark .content {
+    color: #ffffff;
+}
+
+body.dark .card {
+    background: #242424;
+    color: #eaeaea;
+    border: 1px solid #333;
+    box-shadow: none;
+}
+
+body.dark .product-name {
+    color: #dddddd;
+}
+
+body.dark .price {
+    color: #ffffff;
+}
+
+body.dark .card button {
+    background: #3a3232;
+    color: #fff;
+}
+
+body.dark .card button:hover {
+    background: #5a3e36;
+}
+
+body.dark #filtered-products {
+    background: #181818;
+}
+
+body.dark #filtered-products .card {
+    background: #242424;
+}
+
+body.dark .dropdown {
+    background: #242424;
+    color: #ffffff;
+}
+
+body.dark .dropdown-item:hover {
+    background: #2f2f2f;
+}
+
+body.dark .footer {
+    background: #111;
+    color: #ccc;
+}
+body.dark .product-name,
+body.dark #filtered-products .card h3 {
+    color: #ffffff !important;
 }

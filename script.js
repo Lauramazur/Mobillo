@@ -72,34 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
  { nume: "Dulap Balance ", categorie: "dormitor", imagine: "https://i.pinimg.com/736x/bd/bf/ff/bdbfffa18b9457aba10204effa4fae83.jpg" ,price: "5000 Lei"},
 { nume: "Dulap Lumina ", categorie: "dormitor", imagine: "https://i.pinimg.com/1200x/80/6c/a3/806ca3072f1a77e19e5e6f420564bc27.jpg" ,price: "5000 Lei"},
  ];
-
-document.addEventListener("click", (e) => {
-
-  const card = e.target.closest(".card");
-  if (!card) return;
-
-  const img = card.querySelector("img")?.src;
-
-  const name =
-    card.querySelector("h3")?.textContent ||
-    card.querySelector(".product-name")?.textContent;
-
-  const price =
-    card.querySelector("p")?.textContent ||
-    card.querySelector(".price")?.textContent;
-
-  const product = { nume: name, imagine: img, price: price };
-
-  if (e.target.classList.contains("add-cart")) {
-    addToCart(product);
-  }
-
-  if (e.target.classList.contains("add-fav")) {
-    addToFavorites(product);
-  }
-
-});
-
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("close-btn")) {
     closeAll();
@@ -127,25 +99,23 @@ document.addEventListener("click", (e) => {
         <button class="add-fav">♡ Favorite</button>
       </div>
     `).join("");
+
+    attachProductEvents(lista);
   }
 
-  document.querySelectorAll(".filter-bar button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      categorieSelectata = btn.dataset.filter;
-      filtreazaTot();
-    });
+document.querySelectorAll(".filter-bar button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    categorieSelectata = btn.dataset.filter;
+    filtreazaTot();
   });
+});
 
   function filtreazaTot() {
-  
-    if (categorieSelectata === "") {
-      afiseazaProduse([]);
-      return;
+    let rezultate = [...toateProdusele];
+
+    if (categorieSelectata && categorieSelectata !== "toate") {
+      rezultate = rezultate.filter(p => p.categorie === categorieSelectata);
     }
-
-    let rezultate = toateProdusele;
-
-    rezultate = rezultate.filter(p => p.categorie === categorieSelectata);
 
     if (textCautare) {
       rezultate = rezultate.filter(p =>
@@ -153,7 +123,7 @@ document.addEventListener("click", (e) => {
       );
     }
      const container = document.getElementById("filtered-products");
-  container.style.display = "flex"; 
+  container.style.display = "flex";
     afiseazaProduse(rezultate);
   }
 
@@ -165,7 +135,6 @@ document.addEventListener("click", (e) => {
   const cartCount = document.getElementById("cart-count");
   const favCount = document.getElementById("fav-count");
   const overlay = document.getElementById("overlay");
-const filterBar = document.querySelector(".filter-bar");
 
   function saveData() {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -278,6 +247,20 @@ const filterBar = document.querySelector(".filter-bar");
     }
   }
 
+  function attachProductEvents(listaCurenta) {
+    document.querySelectorAll("#filtered-products .card").forEach((card, index) => {
+      const product = listaCurenta[index];
+
+      card.querySelector(".add-cart").addEventListener("click", () => {
+        addToCart(product);
+      });
+
+      card.querySelector(".add-fav").addEventListener("click", () => {
+        addToFavorites(product);
+      });
+    });
+  }
+
   function closeAll() {
     overlay.classList.remove("show");
     cartDropdown.classList.remove("show");
@@ -322,4 +305,15 @@ const filterBar = document.querySelector(".filter-bar");
     });
   }
   updateUI();
+  const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    themeToggle.textContent = "☀️";
+  } else {
+    themeToggle.textContent = "🌙";
+  }
+});
 });
