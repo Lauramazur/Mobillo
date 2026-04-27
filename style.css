@@ -467,3 +467,24 @@ body
     color: #fff;
     text-align: center;
 }
+.dropdown-info {
+    flex: 1;
+}
+
+.delete-btn {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border: none;
+    background: #b33939;
+    color: white;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #802626;
+}
+#filtered-products {
+  display: none;
+}
