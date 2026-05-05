@@ -324,20 +324,31 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!e.target.classList.contains("add-cart") &&
         !e.target.classList.contains("add-fav")) return;
 
-    const name = card.querySelector("h3")?.textContent.trim();
-    const price = card.querySelector("p")?.textContent.trim();
-    const img = card.querySelector("img")?.src;
+    const name =
+  card.dataset.name ||
+  card.querySelector("h3")?.textContent ||
+  card.querySelector(".product-name")?.textContent;
 
-    const produsOriginal = toateProdusele.find(
-      p => p.nume.trim() === name.trim()
-    );
+const price =
+  card.dataset.price ||
+  card.querySelector("p")?.textContent ||
+  card.querySelector(".price")?.textContent;
 
-    const product = {
-      nume: name,
-      price: price,
-      imagine: img,
-      descriere: produsOriginal?.descriere || "Fără descriere"
-    };
+const img =
+  card.dataset.img ||
+  card.querySelector("img")?.src;
+
+const descriere =
+  card.dataset.desc ||
+  toateProdusele.find(p => p.nume.trim() === name.trim())?.descriere ||
+  "Fără descriere";
+
+const product = {
+  nume: name.trim(),
+  price: price.trim(),
+  imagine: img,
+  descriere: descriere
+};
 
     if (e.target.classList.contains("add-cart")) {
       addToCart(product);
