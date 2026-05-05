@@ -290,12 +290,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <p class="product-price">${product.price}</p>
 
+          <div class="currency-converter">
+  <select id="currency-select">
+    <option value="EUR">Euro (€)</option>
+    <option value="USD">USD ($)</option>
+    <option value="RON">RON</option>
+  </select>
+
+  <p id="converted-price">Se încarcă...</p>
+</div>
+
           <button class="buy-now-btn">Comandă acum</button>
         </div>
       </div>
     `;
 
     document.body.appendChild(modal);
+    const currencySelect = modal.querySelector("#currency-select");
+const convertedPrice = modal.querySelector("#converted-price");
+
+async function convertCurrency(currency) {
+
+  const numericPrice = parseFloat(product.price.replace("Lei", "").trim());
+
+  try {
+
+    const response = await fetch("https://open.er-api.com/v6/latest/MDL");
+    const data = await response.json();
+
+    const rate = data.rates[currency];
+
+    const converted = (numericPrice * rate).toFixed(2);
+
+    convertedPrice.textContent =
+      `Preț în ${currency}: ${converted} ${currency}`;
+
+  } catch (error) {
+
+    convertedPrice.textContent =
+      "Nu s-a putut converti valuta.";
+
+  }
+}
+
+convertCurrency("EUR");
+
+currencySelect.addEventListener("change", (e) => {
+  convertCurrency(e.target.value);
+});
+
     overlay.classList.add("show");
 
     modal.querySelector(".close-btn").addEventListener("click", () => {
